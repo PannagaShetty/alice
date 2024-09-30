@@ -34,10 +34,8 @@ class AliceCallsListPage extends StatefulWidget {
   State<AliceCallsListPage> createState() => _AliceCallsListPageState();
 }
 
-class _AliceCallsListPageState extends State<AliceCallsListPage>
-    with SingleTickerProviderStateMixin {
-  final TextEditingController _queryTextEditingController =
-      TextEditingController();
+class _AliceCallsListPageState extends State<AliceCallsListPage> with SingleTickerProviderStateMixin {
+  final TextEditingController _queryTextEditingController = TextEditingController();
   final List<AliceCallsListTabItem> _tabItems = AliceCallsListTabItem.values;
   final ScrollController _scrollController = ScrollController();
   late final TabController? _tabController;
@@ -174,8 +172,7 @@ class _AliceCallsListPageState extends State<AliceCallsListPage>
   void _onClearLogsPressed() => AliceGeneralDialog.show(
         context: context,
         title: context.i18n(AliceTranslationKey.callsListDeleteLogsDialogTitle),
-        description: context
-            .i18n(AliceTranslationKey.callsListDeleteLogsDialogDescription),
+        description: context.i18n(AliceTranslationKey.callsListDeleteLogsDialogDescription),
         firstButtonTitle: context.i18n(AliceTranslationKey.callsListNo),
         secondButtonTitle: context.i18n(AliceTranslationKey.callsListYes),
         secondButtonAction: _onLogsClearPressed,
@@ -229,16 +226,13 @@ class _AliceCallsListPageState extends State<AliceCallsListPage>
   }
 
   /// Called when item from the list has been pressed. It opens details page.
-  void _onListItemPressed(AliceHttpCall call) =>
-      AliceNavigation.navigateToCallDetails(call: call, core: aliceCore);
+  void _onListItemPressed(AliceHttpCall call) => AliceNavigation.navigateToCallDetails(call: call, core: aliceCore);
 
   /// Called when remove all calls button has been pressed.
   void _onRemovePressed() => AliceGeneralDialog.show(
         context: context,
-        title:
-            context.i18n(AliceTranslationKey.callsListDeleteCallsDialogTitle),
-        description: context
-            .i18n(AliceTranslationKey.callsListDeleteCallsDialogDescription),
+        title: context.i18n(AliceTranslationKey.callsListDeleteCallsDialogTitle),
+        description: context.i18n(AliceTranslationKey.callsListDeleteCallsDialogDescription),
         firstButtonTitle: context.i18n(AliceTranslationKey.callsListNo),
         firstButtonAction: () => <String, dynamic>{},
         secondButtonTitle: context.i18n(AliceTranslationKey.callsListYes),
@@ -260,21 +254,15 @@ class _AliceCallsListPageState extends State<AliceCallsListPage>
       AliceGeneralDialog.show(
         context: context,
         title: context.i18n(AliceTranslationKey.saveSuccessTitle),
-        description: context
-            .i18n(AliceTranslationKey.saveSuccessDescription)
-            .replaceAll("[path]", result.path!),
-        secondButtonTitle: OperatingSystem.isAndroid
-            ? context.i18n(AliceTranslationKey.saveSuccessView)
-            : null,
-        secondButtonAction: () =>
-            OperatingSystem.isAndroid ? OpenFilex.open(result.path) : null,
+        description: context.i18n(AliceTranslationKey.saveSuccessDescription).replaceAll("[path]", result.path!),
+        secondButtonTitle: OperatingSystem.isAndroid ? context.i18n(AliceTranslationKey.saveSuccessView) : null,
+        secondButtonAction: () => OperatingSystem.isAndroid ? OpenFilex.open(result.path ?? '') : null,
       );
     } else {
       final [String title, String description] = switch (result.error) {
         AliceExportResultError.logGenerate => [
             context.i18n(AliceTranslationKey.saveDialogPermissionErrorTitle),
-            context
-                .i18n(AliceTranslationKey.saveDialogPermissionErrorDescription),
+            context.i18n(AliceTranslationKey.saveDialogPermissionErrorDescription),
           ],
         AliceExportResultError.empty => [
             context.i18n(AliceTranslationKey.saveDialogEmptyErrorTitle),
@@ -282,13 +270,11 @@ class _AliceCallsListPageState extends State<AliceCallsListPage>
           ],
         AliceExportResultError.permission => [
             context.i18n(AliceTranslationKey.saveDialogPermissionErrorTitle),
-            context
-                .i18n(AliceTranslationKey.saveDialogPermissionErrorDescription),
+            context.i18n(AliceTranslationKey.saveDialogPermissionErrorDescription),
           ],
         AliceExportResultError.file => [
             context.i18n(AliceTranslationKey.saveDialogFileSaveErrorTitle),
-            context
-                .i18n(AliceTranslationKey.saveDialogFileSaveErrorDescription),
+            context.i18n(AliceTranslationKey.saveDialogFileSaveErrorDescription),
           ],
         _ => ["", ""],
       };
@@ -386,8 +372,7 @@ class _ContextMenuButton extends StatelessWidget {
     return PopupMenuButton<AliceCallDetailsMenuItemType>(
       onSelected: onMenuItemSelected,
       itemBuilder: (BuildContext context) => [
-        for (final AliceCallDetailsMenuItemType item
-            in AliceCallDetailsMenuItemType.values)
+        for (final AliceCallDetailsMenuItemType item in AliceCallDetailsMenuItemType.values)
           PopupMenuItem<AliceCallDetailsMenuItemType>(
             value: item,
             child: Row(

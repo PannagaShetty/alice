@@ -11,11 +11,12 @@ topics:
   - alice
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
   flutter: ">=3.3.0"
 
 dependencies:
-  alice: ^1.0.0-dev.9
+  alice:
+    path: /Users/pannaga/Documents/vistas/alice/packages/alice
   dio: ^5.4.3+1
   flutter:
     sdk: flutter
@@ -25,4 +26,5 @@ dev_dependencies:
   test: ^1.25.2
   mocktail: ^1.0.4
   http_mock_adapter: ^0.6.1
-  alice_test: ^1.0.0
+  # alice_test:
+  #   path: /Users/pannaga/Documents/vistas/alice/packages/alice_test
